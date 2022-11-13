@@ -6,13 +6,19 @@
     <title>Document</title>
 </head>
 <body>
-    <h2>Understanding Javascript</h2>
+    <h2>Understanding Loops</h2>
     <script type = "text/javascript">
-        var username = "Sachin";
-        var age = 44;
-        // comments are not interpretted
-        // document is an inbuilt object, which has write()
-        document.write('Username = '+username+', Age = '+age);
+        function muliply(x, y) {
+            // some lines of statements can be here
+            return x * y;
+        }
+        function add(a, b) {
+            // some lines of statements can be here
+            return a + b;
+        }
+        var r = muliply(2, 3); // r will be 6
+        var z = add(r, 2); // z will be 8
+        document.write(`<p>z = ${z}</p>`);
     </script>
 </body>
 </html>
