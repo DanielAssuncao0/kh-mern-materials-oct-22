@@ -2,23 +2,36 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
-    <h2>Understanding Loops</h2>
     <script type = "text/javascript">
-        function muliply(x, y) {
-            // some lines of statements can be here
-            return x * y;
+        class Emp {
+            constructor(id, name, salary) { // instead of function Emp( id, name, salary )
+                this.id = id;
+                this.name = name;
+                this.salary = salary;
+            }
+            display() {
+                document.write(`<p>Id = ${this.id}, Name = ${this.name}, Salary = ${this.salary}</p>`)
+            }
+        } 
+        function test() {
+            let x = 20;
+            if(x > 15) {
+                var a = 35; // a is visible outside if also
+                let y = 30;
+                const z = 15; // z & y are visible only within if
+            }
+            document.write(`<p>a = ${a}</p>`);
+            document.write(`<p>x = ${x}</p>`);
         }
-        function add(a, b) {
-            // some lines of statements can be here
-            return a + b;
-        }
-        var r = muliply(2, 3); // r will be 6
-        var z = add(r, 2); // z will be 8
-        document.write(`<p>z = ${z}</p>`);
+        test();
+        let e = new Emp(123, "Raj", 35000); // e = {id: 123, name: Raj, salary: 35000}
+        let f = new Emp(456, "Vijay", 8000); // f = {id: 456, name: Vijay, salary: 8000}
+        e.display(); 
+        f.display();
     </script>
 </body>
 </html>
