@@ -6,19 +6,28 @@
     <title>Document</title>
 </head>
 <body>
+    <div>
+        <p id = "p1">Some content inside p</p>
+        <div class = "c1">Div with class c1</div>
+        <p class = "c1">P with class c1</p>
+        <p class = "c2">P with class c2</p>
+        <button onclick = "handleClick()">My Button</button>
+    </div>
     <script type = "text/javascript">
-       // exponential operator
-       let pwr = 3 ** 2;
-       document.write(`<p>Power = ${pwr}</p>`);
-       // optional chain
-       let users = [ {name: "Alex", gender: "Male", address: {state: "ABC", city: "Xyz"}}, 
-       {name: "Bruce", gender: "Male"},
-       {name: "Charles", gender: "Male", address: {state: "1324", city: "UUU"}}
-      ];
-        users.forEach((user, index) => {
-            document.write(`<p>Name = ${user.name}, Gender = ${user.gender}, 
-                State = ${user.address?.state}, City = ${user.address?.city}</p>`)
-        });
+        function handleClick() {
+           // accessing the element using id
+           let ele = document.getElementById('p1');
+           //alert(ele.textContent); // textContent returns text of the element
+           ele.textContent = 'Hello p you got an update';
+           // style property to add CSS style attribute
+           ele.style.color = 'red';
+           // accessing multiple HTML elements using getElementsByClassName
+           let eleCollection = document.getElementsByClassName('c1'); // returns array of HTML elements
+           // eleCollection is an array of HTML elements
+           for(let i = 0; i < eleCollection.length; i++) {
+            eleCollection[i].textContent = eleCollection[i].textContent + ' iterating';
+           }
+        }
     </script>
 </body>
 </html>
