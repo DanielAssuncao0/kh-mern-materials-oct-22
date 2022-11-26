@@ -7,26 +7,27 @@
 </head>
 <body>
     <div>
-        <p id = "p1">Some content inside p</p>
-        <div class = "c1">Div with class c1</div>
-        <p class = "c1">P with class c1</p>
-        <p class = "c2">P with class c2</p>
-        <button onclick = "handleClick()">My Button</button>
+        <div>
+            Number1: <input type = "text" id = "n1" >
+        </div>
+        <div>
+            Number2: <input type = "text" id = "n2">
+        </div>
+        <div>
+            Result: <input type = "text" id = "r">
+        </div>
+        <div>
+            <button onclick = "add()">+</button><button>-</button><button>*</button><button>/</button>
+        </div>
     </div>
     <script type = "text/javascript">
-        function handleClick() {
-           // accessing the element using id
-           let ele = document.getElementById('p1');
-           //alert(ele.textContent); // textContent returns text of the element
-           ele.textContent = 'Hello p you got an update';
-           // style property to add CSS style attribute
-           ele.style.color = 'red';
-           // accessing multiple HTML elements using getElementsByClassName
-           let eleCollection = document.getElementsByClassName('c1'); // returns array of HTML elements
-           // eleCollection is an array of HTML elements
-           for(let i = 0; i < eleCollection.length; i++) {
-            eleCollection[i].textContent = eleCollection[i].textContent + ' iterating';
-           }
+        function add() {
+            // by default value will return string, use parseInt
+            let n1 = document.getElementById('n1').value;
+            let x = parseInt(n1);
+            let n2 = document.getElementById('n2').value; 
+            let y = parseInt(n2);
+            document.getElementById('r').value = (x + y);
         }
     </script>
 </body>
