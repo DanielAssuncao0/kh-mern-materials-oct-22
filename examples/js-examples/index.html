@@ -6,28 +6,59 @@
     <title>Document</title>
 </head>
 <body>
-    <div>
+   <form onsubmit="return handleSubmit()" method = "post">
         <div>
-            Number1: <input type = "text" id = "n1" >
+            Name <input type = "text" autocomplete="off" name = "n1">
         </div>
         <div>
-            Number2: <input type = "text" id = "n2">
+            Password <input type = "password" name = "n2">
         </div>
         <div>
-            Result: <input type = "text" id = "r">
+            Confirm Password <input type = "password" name = "n3">
         </div>
         <div>
-            <button onclick = "add()">+</button><button>-</button><button>*</button><button>/</button>
+            Gender <input type = "radio" name = "n4" value = "M"> Male <input type = "radio" name = "n4" value = "F">Female
         </div>
-    </div>
-    <script type = "text/javascript">
-        function add() {
-            // by default value will return string, use parseInt
-            let n1 = document.getElementById('n1').value;
-            let x = parseInt(n1);
-            let n2 = document.getElementById('n2').value; 
-            let y = parseInt(n2);
-            document.getElementById('r').value = (x + y);
+        <div>
+            Skills <input type = "checkbox" name = "n5" value = "HTML"> HTML
+            <input type = "checkbox" name = "n5" value = "JS"> Javascript
+            <input type = "checkbox" name = "n5" value = "CSS"> CSS
+        </div>
+        <div>
+            <input type = "submit" value = "submit">
+        </div>
+   </form>
+    <script>
+        function handleSubmit() {
+            // accessing forms using forms property of document
+            let user = document.forms[0].n1; // accesses form#input>n1
+            let pass = document.forms[0].n2; // accesses form#input>n2
+            let confirm = document.forms[0].n3; // accesses form#input>n3
+            let gen = document.forms[0].n4; // accesses form#input >> n4
+            let skills = document.forms[0].n5; // accesses form#input >> n5
+            if(user.value.length < 1) {
+                alert("Username is required");
+                return false;
+            } 
+            if(pass.value.length < 1) {
+                alert("Password is required");
+                return false;
+            }
+            if(pass.value != confirm.value) {
+                alert("Password & Confirm Password must be same");
+                return false;
+            }
+            let radioStatus = false;
+            for(let i = 0; i < gen.length; i++) {
+                if(gen[i].checked) {
+                    radioStatus = true;
+                }
+            }
+            if(radioStatus == false) {
+                alert("Gender must be selected");
+                return false;
+            }
+            return true;
         }
     </script>
 </body>
