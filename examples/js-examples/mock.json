@@ -1,0 +1,6 @@
+[
+    {"firstname": "Michael", "lastname": "Jackson", "profession":"Artist"},
+    {"firstname": "Sachin", "lastname": "Tendulkar", "profession":"Sports"},
+    {"firstname": "Chris", "lastname": "Jack", "profession":"Artist"},
+    {"firstname": "John", "lastname": "Mike", "profession":"Sports"}   
+]
