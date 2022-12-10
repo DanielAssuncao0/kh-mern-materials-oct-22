@@ -1,0 +1,20 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id = 'main'>Main Heading</h1>
+    <h2 style = 'border: solid red 2px' onclick="shift(event)">Sub Heading</h2>
+    <h3 style = 'color: red;' onclick = "shift(event)">Some content in red color</h3>
+    <script type = 'text/javascript'>
+        function shift(e) {
+            let h1 = document.getElementById('main');
+            h1.style = e.target.style.cssText;
+            //console.log(e.target.style.cssText);
+        }
+    </script>
+</body>
+</html>
