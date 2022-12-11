@@ -14,49 +14,32 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <script type = "text/babel">
-       function Avatar(props) {
-           return <div>
-           <img src = {props.url} width = "50" height = "50"></img>
-           </div>
+       function User(props) {
+           return (<div><h2>User Component, {props.name}</h2></div>);
        }
-       function Profile(props) {
-        return (<div>
-            <Avatar url = {props.profile.imageURL} />
-            Name: <i>{props.profile.name}</i>
-        </div>)
+       class Hello extends React.Component {
+           constructor(props) {
+               super(props);
+           }
+           render() {
+               return (<div>
+               <h2>Hello Component, {this.props.title}</h2>
+               </div>);
+           }
        }
-       function Comment(props) {
-        return <div>
-        <Profile profile = {props.profile}/>
-        <p>Comment: {props.text}</p>
-        <p>Date: {props.date}</p>
-        </div>
-       }
-       function App() {
-           let comment1 = {
-               comment: "Hello, how are you", 
-               profile : {
-                   name: "Mark Zukerberg", 
-                   imageURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmeu1W-O3P5sTOzBNfVUBWuqgyWSoXkinmAhGmQRqgFVX0f6vTF5gsYg&s"
-                },
-                date: "10-12-2022"
-            };
-            
-           let comment2 = {
-               comment: "Learning React", 
-               profile : {
-                   name: "Bill Gates", 
-                   imageURL: "http://t1.gstatic.com/licensed-image?q=tbn:ANd9GcQi4a8NzG1ocCbgUUZxxDLocQwDQvhod4gHC3aRRg3juK0LDsZHECn7AwMJq8WUmPFLai9IJhY5YWNLRys"
-                },
-                date: "10-12-2022"
-            };
-            return <div>
-             <Comment text = {comment1.comment} profile = {comment1.profile} date = {comment1.date} />
-             <Comment text = {comment2.comment} profile = {comment2.profile} date = {comment2.date} />
-            </div>
-       }
-       ReactDOM.render(<App />, document.getElementById('main'));
-       // Profile component must display Mr. or Ms. beside the firstname based on gender
+       class App extends React.Component { 
+           // override render() function of Component
+           render() {
+               return (<div>
+               <h1>Root component</h1>
+               <Hello title = "React learning"/>
+               <User name = "Alex" />
+               </div>);
+           }
+       } 
+    //    ReactDOM.render(<App />, document.getElementById('main'));
+      let root = ReactDOM.createRoot(document.getElementById('main'));
+      root.render(<App />);
     </script>
     
 </body>
