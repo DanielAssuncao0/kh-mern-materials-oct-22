@@ -24,17 +24,17 @@ export function Form() {
     return (<div>
         <h2>Simple Registration Form</h2>
         <form onSubmit = {handleSubmit}>
-            <div>Enter Name <input type = "text" name = "name" 
+            <div>Enter Name <input type = "text" name = "n1" 
                 autoComplete="off" onChange = {handleChange}></input></div>
             <div>
                 Select Gender 
-                <input type = "radio" name = "gender" value = "M" 
+                <input type = "radio" name = "n2" value = "M" 
                 onChange = {handleChange}></input>M
-                <input type = "radio" name = "gender" value = "F" 
+                <input type = "radio" name = "n2" value = "F" 
                 onChange = {handleChange}></input>F
             </div>
             <div>
-                Select DOB <input type = "date" name = "dob" 
+                Select DOB <input type = "date" name = "n3" 
                 onChange = {handleChange}></input>
             </div>
             <div>
