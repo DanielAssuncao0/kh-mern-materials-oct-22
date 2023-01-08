@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 
 export class UserForm extends React.Component {
     constructor(props) {
@@ -11,6 +11,7 @@ export class UserForm extends React.Component {
     handleChange = (e) => {
         this.setState({[e.target.name]: e.target.value})
     }
+    
 
     render() {
         return (<div>

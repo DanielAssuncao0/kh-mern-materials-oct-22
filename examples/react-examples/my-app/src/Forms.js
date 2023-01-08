@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 export function Form() {
     let [name, setName] = useState('');
     let [gender, setGender] = useState('');
     let [dob, setDob] = useState('');
-
+    let [message, setMessage] = useState('');
     let handleChange = (e) => {
         let inputName = e.target.name;
         let inputValue = e.target.value;
@@ -21,11 +21,20 @@ export function Form() {
     let handleSubmit = (e) => {
         e.preventDefault();
     }
+    useEffect(() => {
+        if(name.length <= 3) {
+            setMessage('Name must be more than 3 characters');
+        } else {
+            setMessage('');
+        }
+    });
     return (<div>
         <h2>Simple Registration Form</h2>
         <form onSubmit = {handleSubmit}>
             <div>Enter Name <input type = "text" name = "n1" 
-                autoComplete="off" onChange = {handleChange}></input></div>
+                autoComplete="off" onChange = {handleChange}></input>
+                <span className = 'text-danger'>{message}</span>
+            </div>
             <div>
                 Select Gender 
                 <input type = "radio" name = "n2" value = "M" 

@@ -1,31 +1,28 @@
 import logo from './logo.svg';
 import './App.css';
-import {UserForm} from './Forms2';
-import { Form } from './Forms';
-import { Hello } from './Hello';
-import Greetings from './Greetings';
-import { Link, Routes, Route} from 'react-router-dom';
-import {FakeUsers} from './FakeUsers';
+import React from 'react';
+class Columns extends React.Component {
+  render() {
+    return (<React.Fragment>
+      <td>Column1</td><td>Column2</td>
+    </React.Fragment>
+  );
+  }
+}
+function Table() {
+  return (<div>
+    <table className = "table">
+      <tbody>
+      <tr><Columns /></tr>
+      </tbody>
+    </table>
+  </div>)
+}
 function App() {
     return (
-      <div className = 'container-fluid'>
-        <div>
-          <Link to = "/one">Registration Form</Link> <br />
-          <Link to = "/two">Second Form</Link> <br />
-          <Link to = "/three">Hello Component</Link> <br />
-        </div>
-        <div>
-          <Routes>
-            <Route path = "/one" element = {<UserForm />} />
-            <Route path = "/two" element = {<Form />} />
-            <Route path = "/three" element = {<Hello />} />
-            <Route path = "" element = {<Greetings />} />
-          </Routes>
-        </div>
-        <div>
-          <FakeUsers />
-        </div>
-      </div>
+     <div>
+       <Table />
+     </div>
   );
 }
 
