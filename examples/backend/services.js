@@ -32,9 +32,52 @@ app.get("/employees/:id", (request, response) => {
         .then((doc) => {
             if(doc == null) throw err; 
             response.json(doc);
-        }).catch(() => response.json({"error":`Sorry ${id} not found`}))
+        }).catch(() => response.status(404).json({"error":`Sorry ${id} not found`}))
         .finally(() => client.close())
     })
     .catch(() => response.status(404).json({"error": "DB_ERR"}));
-    
+});
+// storing the employee documents
+app.post("/employees", (request, response) => { 
+    let data = request.body;
+    mongoClient.connect(DB_URL, {useNewUrlParser: true})
+    .then((client) => {
+        let db = client.db("mydb");
+        db.collection("employee")
+        .insertOne(data)
+        .then(() => response.status(201).json({"message":"Record inserted"}))
+        .catch(() => response.status(404).json({"error":"Failed to store"}))
+        .finally(() => client.close())
+    })
+    .catch(() => response.status(404).json({"error": "DB_ERR"}));
+});
+// update the document based on _id
+app.put("/employees/:id", (request, response) => { 
+    let id = parseInt(request.params.id);
+    let data = request.body;
+    mongoClient.connect(DB_URL, {useNewUrlParser: true})
+    .then((client) => {
+        let db = client.db("mydb");
+        db.collection("employee")
+        .updateOne({_id: id}, {$set: data})
+        .then((value) => response.status(200).json(value))
+        .catch((err) => response.status(404).json(err))
+        .finally(() => client.close())
+    })
+    .catch(() => response.status(404).json({"error": "DB_ERR"}));
+});
+// deleting the document based on _id
+app.delete("/employees/:id", (request, response) => { 
+    let id = parseInt(request.params.id);
+   
+    mongoClient.connect(DB_URL, {useNewUrlParser: true})
+    .then((client) => {
+        let db = client.db("mydb");
+        db.collection("employee")
+        .deleteOne({_id: id})
+        .then((value) => response.status(200).json(value))
+        .catch((err) => response.status(404).json(err))
+        .finally(() => client.close())
+    })
+    .catch(() => response.status(404).json({"error": "DB_ERR"}));
 });
