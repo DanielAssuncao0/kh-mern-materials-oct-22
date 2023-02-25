@@ -43,8 +43,9 @@ function StoreForm() {
 
 function FetchEmployees() {
   let [employees, setEmployees] = useState([]);
+  let URL = 'http://localhost:8080/employees';
   let fetch = () => {
-    let URL = 'http://localhost:8080/employees';
+    
     axios.get(URL)
     .then(response => setEmployees(response.data))
     .catch(error => console.log(error))
@@ -57,7 +58,7 @@ function FetchEmployees() {
     <table className = 'table'>
       <thead>
         <tr>
-          <th>ID</th><th>NAME</th><th>SALARY</th>
+          <th>ID</th><th>NAME</th><th>SALARY</th><th><i className='text-danger'>X</i></th>
         </tr>
       </thead>
       <tbody>
@@ -67,7 +68,17 @@ function FetchEmployees() {
           <td>{employee._id}</td>
           <td>{employee.name}</td>
           <td>{employee.salary}</td>
-        </tr>)}
+          <td><button className = 'btn btn-danger' 
+          onClick = {() => 
+          axios.delete(`${URL}/${employee._id}`)
+          .then(() => {
+            axios.get(URL)
+            .then(response => setEmployees(response.data))
+            .catch(error => console.log(error))
+          })
+          }>Delete</button></td>
+        </tr>)
+        }
       </tbody>
     </table>
   </div>)
